@@ -77,14 +77,12 @@ export const cancelBooking = async (req, res) => {
       res.status(404)
       throw new Error('Booking not found')
     }
-
-    // Check if the booking belongs to the user making the request
+    
     if (booking.user.toString() !== req.user._id.toString()) {
       res.status(403)
       throw new Error('Not authorized to cancel this booking')
     }
 
-    // Only allow cancellation of pending bookings
     if (booking.status !== 'pending') {
       res.status(400)
       throw new Error('Cannot cancel a booking that is not pending')

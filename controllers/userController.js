@@ -52,9 +52,6 @@ export const deleteUser = async (req, res) => {
   }
 }
 
-// @desc    Auth user & get token
-// @route   POST /api/users/login
-// @access  Public
 export const authUser = async (req, res) => {
   try {
     const { email, password } = req.body
@@ -80,9 +77,7 @@ export const authUser = async (req, res) => {
   }
 }
 
-// @desc    Get user profile
-// @route   GET /api/users/profile
-// @access  Private
+
 export const getUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
